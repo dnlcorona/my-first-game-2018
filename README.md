@@ -20,15 +20,19 @@
   </a>
 </p>
 
-## 🚀 Projeto
+## 📁 Projeto
 
 Um jogo de plataforma.
 
-## 🚀 Gameplay
+## 🎮 Gameplay
 
-ArrowKeys : Movimentação
-Z : Atira
+Arrow keys: Movimentação </br>
+Z: Atira
 
+## 📄 História
+
+Sempre fui apaixonado por jogos eletrônicos, então decidi que iria criar eu mesmo o meu próprio jogo. Foi assim, então que surge o The Purrge, feito por mim 
+sem conhecimento nenhum de programação.
 
 ## 🚀 **Em constante evolução...**
 
