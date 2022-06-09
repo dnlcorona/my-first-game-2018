@@ -1,0 +1,156 @@
+//MOVIMENTAÇÃO DO PLAYER E VARIAVEIS
+key_left = keyboard_check(vk_left);
+key_right = keyboard_check(vk_right);
+key_jump = keyboard_check_pressed(vk_up);
+key_down = keyboard_check_pressed(vk_down);
+estarnawall = (!place_meeting(x,y+1,oBlocao));
+estarnawall2 = (!place_meeting(x,y,oBlocao));
+atirando = keyboard_check_pressed(ord("Z"));
+
+var move,ex,ey
+
+
+//DAR A MOVIMENTAÇÃO AO PLAYER
+move = key_right - key_left;
+
+hsp = move * walkspd;
+
+vsp = vsp + grv
+
+if (place_meeting(x,y+1,oBlocao)) && (key_jump)
+{
+	vsp = -15.3 ;//FORÇA DO PULO
+}
+
+if (place_meeting(x,y+1,oAntena)) && (key_jump)
+{
+	vsp = -15.3 ;//FORÇA DO PULO
+}
+
+//COLISÃO HORIZONTAL
+if (place_meeting(x+hsp,y,oBlocao))
+{
+	while (!place_meeting(x+sign(hsp),y,oBlocao))
+	{
+		x = x + sign(hsp);
+	}
+	hsp = 0;
+}
+x = x + hsp;
+
+//COLISÃO VERTICAL
+if (place_meeting(x,y+vsp,oBlocao))
+{
+	while (!place_meeting(x,y+sign(vsp),oBlocao))
+	{
+		y = y + sign(vsp);
+	}
+	vsp = 0;
+}
+y = y + vsp;
+
+//ANIMAÇAO
+
+if estarnawall = 1 // SE O PLAYER NAO ESTIVER UM PIXEL ACIMA DA WALL
+{
+	if (vsp > 0) sprite_index = sJumpdesc
+	if (vsp < 0) sprite_index = sJumpsubi
+
+}
+else
+{
+	image_speed = 1;
+	if (hsp == 0 && keyboard_lastkey = vk_left) or (keyboard_lastkey = vk_up)
+	{
+		sprite_index = sParado; 
+	}
+	if (hsp == 0 && keyboard_lastkey = vk_right) or (keyboard_lastkey = vk_up)
+	{
+		sprite_index = sParador; 
+	}
+}
+
+if (key_left = 1)
+{
+	sprite_index = sPrincl
+}
+
+
+if (key_right = 1)
+{
+	sprite_index = sPrincr
+}
+
+if key_down = 1
+{
+	sprite_index = sAgachan
+}
+
+if (key_left = 1 && key_down = 1)
+{
+	sprite_index = sAgachnandando
+}
+
+if (key_right = 1 && key_down = 1)
+{
+	sprite_index = sAgachnandandol
+}
+
+// COLISAO COM ANTENA
+if (place_meeting(x,y,oAntena))
+{
+	vsp = 0;
+	grv = 0;
+}
+else
+{
+grv = 0.8;
+}
+
+
+// ANIMAÇAO 2 JUNTOS
+if (key_left = 1 && key_right = 1)
+{
+	sprite_index = sParado;
+}
+
+// MORTE
+if (lives == 0)
+{
+game_restart()
+}
+
+
+//ATIRANDO
+
+if (atirando)
+{
+	ex = instance_nearest(x, y, odirecaodotiro).x;
+ey = instance_nearest(x, y, odirecaodotiro).y;
+with (instance_create_layer(x,y,"Bullets",oBullet))
+   {
+   direction = point_direction(x, y, ex, ey);
+   }
+}
+
+
+//se o x do direcao do tiro for maior xcalse ...
+
+if (atirando)
+{
+if odirecaodotiro.x > oPlayer.x //MIRANDO PARA DIREITA
+{
+	sprite_index = sAtirandor
+}
+else
+{
+	sprite_index = sAtirando
+}
+}
+
+
+
+
+
+
+
